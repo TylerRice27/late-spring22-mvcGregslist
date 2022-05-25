@@ -1,21 +1,28 @@
 import { ProxyState } from "../AppState.js";
 
 
-function _drawHouses(){
+function _drawHouses() {
   // get all the houses and build a template
-  
+  debugger
+  let houses = ProxyState.houses
+  let template = ""
 
-  document.getElementById('listings').innerHTML = ' The Houses go here'
+  houses.forEach(h => {
+    template += h.Template
+  })
+
+
+  document.getElementById('listings').innerHTML = template
 }
 
 
-export class HousesController{
- constructor(){
-   console.log('Houses controller loaded', ProxyState.houses);
- }
+export class HousesController {
+  constructor() {
+    console.log('Houses controller loaded', ProxyState.houses);
+  }
 
- viewHouses(){
-  //  Get Car Form and inject into modal body
-  _drawHouses()
- }
+  viewHouses() {
+    //  Get Car Form and inject into modal body
+    _drawHouses()
+  }
 }
