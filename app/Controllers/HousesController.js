@@ -3,7 +3,7 @@ import { ProxyState } from "../AppState.js";
 
 function _drawHouses() {
   // get all the houses and build a template
-  debugger
+
   let houses = ProxyState.houses
   let template = ""
 
