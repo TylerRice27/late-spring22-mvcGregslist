@@ -20,6 +20,10 @@ function _drawHouses() {
 export class HousesController {
   constructor() {
     console.log('Houses controller loaded', ProxyState.houses);
+    ProxyState.on('houses', _drawHouses)
+    //this defaults back to my house page might be used
+    //for not going back to cars when I submit a form
+    this.viewHouses()
   }
 
   viewHouses() {
@@ -32,4 +36,17 @@ export class HousesController {
 
     _drawHouses()
   }
+
+
+
+  createHouse() {
+    window.event.preventDefault()
+    let form = window.event.target
+    console.log('form submitted', form);
+
+  }
+
+
+
+
 }
