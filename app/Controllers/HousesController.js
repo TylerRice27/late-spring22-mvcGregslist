@@ -1,4 +1,5 @@
 import { ProxyState } from "../AppState.js";
+import { getCarForm } from "../Components/CarForm.js";
 
 
 function _drawHouses() {
@@ -23,6 +24,12 @@ export class HousesController {
 
   viewHouses() {
     //  Get Car Form and inject into modal body
+    ///Tyler note I will have to come back and change this to house form
+    // and pull it from my components folder but I think I have to make 
+    //create house first
+    let form = getCarForm()
+    document.getElementById("form-body").innerHTML = form
+
     _drawHouses()
   }
 }
