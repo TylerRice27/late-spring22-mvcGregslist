@@ -27,7 +27,7 @@ export class House {
       <h4 class="text-center">$${this.price}</h4>
       <p>${this.description}</p>
     
-     <button class="btn btn-danger" onclick="//app.carsController.deleteCar('${this.id}')"><i class="mdi mdi-delete"></i></button>
+     <button class="btn btn-danger" onclick="app.housesController.deleteHouse('${this.id}')"><i class="mdi mdi-delete"></i></button>
     </div>
 </div>
          `

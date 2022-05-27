@@ -1,6 +1,7 @@
 import { ProxyState } from "../AppState.js";
-import { getCarForm } from "../Components/CarForm.js";
+
 import { getHouseForm } from "../Components/HouseForm.js";
+import { housesService } from "../Services/HouseService.js";
 
 
 function _drawHouses() {
@@ -14,7 +15,7 @@ function _drawHouses() {
   })
 
 
-  document.getElementById('listings').innerHTML = template
+  document.getElementById("listings").innerHTML = template
 }
 
 
@@ -45,8 +46,27 @@ export class HousesController {
     let form = window.event.target
     console.log('form submitted', form);
 
-  }
+    let houseData = {
+      address: form.address.value,
+      rooms: form.rooms.value,
+      year: form.year.value,
+      price: form.price.value,
+      description: form.description.value,
+      imgUrl: form.imgUrl.value
 
+
+    }
+    console.log("house data on form submit", houseData);
+
+    housesService.createHouse(houseData)
+    form.reset()
+
+
+  }
+  deleteHouse(id) {
+    console.log('deleting house', id);
+    housesService.deleteHouse(id)
+  }
 
 
 
