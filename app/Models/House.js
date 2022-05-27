@@ -21,7 +21,7 @@ export class House {
         return /*html*/ `
 
 <div class=" col-6 col-md-3">
-    <div class="rounded shadow p-2" >
+    <div class="rounded shadow bg-primary p-2" >
       <img class="img-fluid" src="${this.imgUrl}" alt="">
       <h5 class="text-center">${this.address} | ${this.rooms} | ${this.year}</h5>
       <h4 class="text-center">$${this.price}</h4>
