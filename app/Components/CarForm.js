@@ -1,4 +1,4 @@
-export function getCarForm(){
+export function getCarForm() {
   return `
   
   <form class="mb-3 col-12 bg-white p-3 mt-4" onsubmit="app.carsController.createCar()">

@@ -15,9 +15,12 @@ export class House {
         this.imgUrl = houseData.imgUrl
     }
 
+
+    //Need to come back later and change deleteCar to deleteHouse
     get Template() {
         return /*html*/ `
-        <div class=" col-6 col-md-3">
+
+<div class=" col-6 col-md-3">
     <div class="rounded shadow p-2" >
       <img class="img-fluid" src="${this.imgUrl}" alt="">
       <h5 class="text-center">${this.address} | ${this.rooms} | ${this.year}</h5>
@@ -26,7 +29,7 @@ export class House {
     
      <button class="btn btn-danger" onclick="//app.carsController.deleteCar('${this.id}')"><i class="mdi mdi-delete"></i></button>
     </div>
-  </div>
+</div>
          `
     }
 }

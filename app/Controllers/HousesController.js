@@ -1,5 +1,6 @@
 import { ProxyState } from "../AppState.js";
 import { getCarForm } from "../Components/CarForm.js";
+import { getHouseForm } from "../Components/HouseForm.js";
 
 
 function _drawHouses() {
@@ -31,7 +32,7 @@ export class HousesController {
     ///Tyler note I will have to come back and change this to house form
     // and pull it from my components folder but I think I have to make 
     //create house first
-    let form = getCarForm()
+    let form = getHouseForm()
     document.getElementById("form-body").innerHTML = form
 
     _drawHouses()

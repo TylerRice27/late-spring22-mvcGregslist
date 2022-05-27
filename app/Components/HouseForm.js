@@ -1,7 +1,8 @@
 
 export function getHouseForm() {
-    return `
-<form form class="mb-3 col-12 bg-white p-3 mt-4" onsubmit="app.housesController.createHouses()">>
+  return `
+<form form class="mb-3 col-12 bg-white p-3 mt-4" onsubmit="app.housesController.createHouse()">
+                <h3> List a House</h3>
                 <div class="mb-3">
                   <label for="exampleInputEmail1" class="form-label">Email address</label>
                   <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
