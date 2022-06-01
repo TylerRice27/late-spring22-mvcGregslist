@@ -3,11 +3,28 @@ import { Car } from "../Models/Car.js";
 
 
 class CarsService {
-  createCar(carData) {
+  async getCars() {
+    const res = await axios.get('https://bcw-sandbox.herokuapp.com/api/cars')
+    console.log('getCars', res.data);
+    ProxyState.cars = res.data.map(c => new Car(c))
+  }
+  async createCar(carData) {
     console.log('arrived at service un-damaged', carData);
+    const res = await axios.post('https://bcw-sandbox.herokuapp.com/api/cars', carData)
+    console.log('createCar', res.data);
     ProxyState.cars = [...ProxyState.cars, new Car(carData)]
     console.log(ProxyState.cars);
   }
+
+  async updateCar(carData, id) {
+    const res = await axios.put('https://bcw-sandbox.herokuapp.com/api/cars' + id, carData)
+    console.log('updateCar', res.data);
+
+    let carIndex = ProxyState.cars.findIndex(c => c.id == id)
+    ProxyState.cars.splice(carIndex, 1, new Car(res.data))
+    ProxyState.cars = ProxyState.cars
+  }
+
   deleteCar(id) {
     // console.log('arrived in service', id);
     // NOTE find is cool but not necessary here

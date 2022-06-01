@@ -16,6 +16,8 @@ export class CarsController {
   constructor() {
     console.log('cars controller loaded', ProxyState.cars);
     ProxyState.on('cars', _drawCars)
+    this.getCars()
+
     this.viewCars()
   }
 
@@ -27,8 +29,13 @@ export class CarsController {
     _drawCars()
   }
 
+  async getCars() {
+    await carsService.getCars()
+  }
 
-  createCar() {
+
+
+  async createCar() {
     // NOTE prevent default keeps the form submit event from reloading the page
     window.event.preventDefault()
     let form = window.event.target
@@ -52,6 +59,39 @@ export class CarsController {
     // it's best to close the modal here once the method is complete, closing it with the button click will not work later when things get more complicated
     bootstrap.Modal.getOrCreateInstance(document.getElementById('form-modal')).hide()
   }
+
+  async updateCar(id) {
+    debugger
+    window.event.preventDefault()
+    console.log('updating car', id);
+    let form = window.event.target
+    let carData = {
+      make: form.make.value,
+      model: form.model.value,
+      year: form.year.value,
+      price: form.price.value,
+      description: form.description.value,
+      imgUrl: form.imgUrl.value,
+      color: form.color.value
+    }
+    await carsService.updateCar(carData, id)
+
+  }
+
+  openCreateForm() {
+    let form = getCarForm()
+    document.getElementById('form-body').innerHTML = form
+    bootstrap.Modal.getOrCreateInstance(document.getElementById('form-modal')).show()
+  }
+
+  openEditForm(id) {
+    let car = ProxyState.cars.find(c => c.id == id)
+    console.log('open from', car);
+    let updateForm = getCarForm(car)
+    document.getElementById('form-body').innerHTML = updateForm
+    bootstrap.Modal.getOrCreateInstance(document.getElementById('form-modal')).show()
+  }
+
 
   deleteCar(id) {
     console.log('deleting car', id);

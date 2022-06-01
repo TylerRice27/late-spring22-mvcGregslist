@@ -36,7 +36,7 @@ export class HousesController {
     let form = getHouseForm()
     document.getElementById("form-body").innerHTML = form
 
-    _drawHouses()
+    // _drawHouses()
   }
 
 
